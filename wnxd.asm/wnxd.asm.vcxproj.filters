@@ -20,18 +20,12 @@
     <ClCompile Include="hook.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="unmanaged.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="asm.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="hook.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="unmanaged.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

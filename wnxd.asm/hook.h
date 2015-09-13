@@ -176,15 +176,15 @@ namespace wnxd
 			generic <typename TResult> TResult Run(array<Object^>^ args)
 			{
 				this->Switch();
-				//TResult ret = this._info.IL ? Asm::PtrRun<TResult>(this._info.Source, args) : Asm::PtrRun_Impl<TResult>(this._info.Source, args);
+				TResult ret = this->_info->IL ? Asm::PtrRun<TResult>(this->_info->Source, args) : Asm::PtrRun_Impl<TResult>(this->_info->Source, args);
 				this->Switch();
 				return (TResult)gcnew Object();
 			}
 			void Run(array<Object^>^ args)
 			{
 				this->Switch();
-				//if (this->_info.IL) asm::PtrRun(this._info.Source, args);
-				//else asm::PtrRun_Impl(this._info.Source, args);
+				if (this->_info->IL) Asm::PtrRun(this->_info->Source, args);
+				else Asm::PtrRun_Impl(this->_info->Source, args);
 				this->Switch();
 			}
 			static property Hook^ Source
