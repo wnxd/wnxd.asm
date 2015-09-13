@@ -79,6 +79,12 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="asm.cpp" />
     <ClCompile Include="hook.cpp" />
+    <ClCompile Include="unmanaged.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="asm.h" />
+    <ClInclude Include="hook.h" />
+    <ClInclude Include="unmanaged.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
