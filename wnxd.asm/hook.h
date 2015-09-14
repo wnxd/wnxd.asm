@@ -178,7 +178,7 @@ namespace wnxd
 				this->Switch();
 				TResult ret = this->_info->IL ? Asm::PtrRun<TResult>(this->_info->Source, args) : Asm::PtrRun_Impl<TResult>(this->_info->Source, args);
 				this->Switch();
-				return (TResult)gcnew Object();
+				return ret;
 			}
 			void Run(array<Object^>^ args)
 			{
