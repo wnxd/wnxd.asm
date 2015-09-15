@@ -13,26 +13,39 @@ generic <typename TResult> TResult Asm::PtrToObj_Func(int p)
 }
 generic <typename TResult> TResult Asm::_PtrRun(int ptr, array<Byte>^ code, array<Object^>^ args)
 {
-	array<bool>^ _isValue = gcnew array<bool>(args->Length);
-	for (int i = 0; i < args->Length; i++) _isValue[i] = args[i]->GetType()->IsValueType;
-	IntPtr _ptr = Marshal::AllocHGlobal(code->Length);
-	Marshal::Copy(code, 0, _ptr, code->Length);
-	VirtualProtectExecute(_ptr, code->Length);
-	Func<int, array<Object^>^, array<bool>^, TResult>^ _func = gcnew Func<int, array<Object^>^, array<bool>^, TResult>(_PtrRun_Func<TResult>);
-	FieldInfo^ _methodPtr = _func->GetType()->GetField("_methodPtr", BindingFlags::NonPublic | BindingFlags::Instance);
-	IntPtr _old = (IntPtr)_methodPtr->GetValue(_func);
-	_methodPtr->SetValue(_func, _ptr);
-	TResult ret = _func(ptr, args, _isValue);
 	try
 	{
-		_methodPtr->SetValue(_func, _old);
+		array<bool>^ _isValue = gcnew array<bool>(args->Length);
+		for (int i = 0; i < args->Length; i++) _isValue[i] = args[i] == nullptr ? false : args[i]->GetType()->IsValueType;
+		IntPtr _ptr = Marshal::AllocHGlobal(code->Length);
+		Marshal::Copy(code, 0, _ptr, code->Length);
+		VirtualProtectExecute(_ptr, code->Length);
+		Func<int, array<Object^>^, array<bool>^, TResult>^ _func = gcnew Func<int, array<Object^>^, array<bool>^, TResult>(_PtrRun_Func<TResult>);
+		FieldInfo^ _methodPtr = _func->GetType()->GetField("_methodPtr", BindingFlags::NonPublic | BindingFlags::Instance);
+		IntPtr _old = (IntPtr)_methodPtr->GetValue(_func);
+		_methodPtr->SetValue(_func, _ptr);
+		TResult ret = _func(ptr, args, _isValue);
+		try
+		{
+			_methodPtr->SetValue(_func, _old);
+		}
+		catch (...)
+		{
+			_methodPtr->SetValue(_func, IntPtr::Zero);
+		}
+		Marshal::FreeHGlobal(_ptr);
+		return ret;
 	}
 	catch (...)
 	{
-		_methodPtr->SetValue(_func, IntPtr::Zero);
+		Type^ T = TResult::typeid;
+		if (T->IsValueType) return (TResult)Activator::CreateInstance(T);
+		else
+		{
+			Object^ obj;
+			return (TResult)obj;
+		}
 	}
-	Marshal::FreeHGlobal(_ptr);
-	return ret;
 }
 //internal
 bool Asm::IsExternal(MethodBase^ method)

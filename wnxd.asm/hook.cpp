@@ -117,7 +117,6 @@ void Hook::Unregister(int sourcetoken)
 		}
 		_hooklist->Remove(sourcetoken);
 	}
-
 }
 MethodBase^ Hook::GetMethod(Object^ target, String^ methodname)
 {
@@ -169,7 +168,6 @@ Hook^ Hook::Source::get()
 		if (kv.Value->DestinationToken == mb->MetadataToken)
 		{
 			return gcnew Hook(kv.Key, mb);
-			break;
 		}
 	}
 	return nullptr;
