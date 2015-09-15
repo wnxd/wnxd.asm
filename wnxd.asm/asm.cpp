@@ -1,3 +1,4 @@
+#include <Windows.h>
 #include "asm.h"
 
 using namespace wnxd::Asm;

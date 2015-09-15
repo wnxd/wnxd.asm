@@ -1,3 +1,4 @@
+#include "asm.h"
 #include "hook.h"
 
 using namespace wnxd::Asm;
