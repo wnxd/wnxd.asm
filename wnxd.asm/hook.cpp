@@ -2,6 +2,8 @@
 #include "hook.h"
 
 using namespace wnxd::Asm;
+using namespace System::Diagnostics;
+using namespace System::Runtime::InteropServices;
 //private
 Hook^ Hook::_GetSource(int methodtoken, MethodBase^ method)
 {
