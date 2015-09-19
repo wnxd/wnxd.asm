@@ -66,52 +66,52 @@ void Asm::VirtualProtectExecute(void* address, int size)
 	VirtualProtectEx((void*)Process::GetCurrentProcess()->Handle, address, size, PAGE_EXECUTE_READWRITE, &old);
 }
 //public
-void Asm::PtrRun(IntPtr ptr, array<Object^>^ args)
+void Asm::PtrRun(IntPtr ptr, ...array<Object^>^ args)
 {
 	PtrRun<int>((int)ptr, args);
 }
-void Asm::PtrRun(void* ptr, array<Object^>^ args)
+void Asm::PtrRun(void* ptr, ...array<Object^>^ args)
 {
 	PtrRun<int>((int)ptr, args);
 }
-void Asm::PtrRun(int ptr, array<Object^>^ args)
+void Asm::PtrRun(int ptr, ...array<Object^>^ args)
 {
 	PtrRun<int>(ptr, args);
 }
-generic <typename TResult> TResult Asm::PtrRun(IntPtr ptr, array<Object^>^ args)
+generic <typename TResult> TResult Asm::PtrRun(IntPtr ptr, ...array<Object^>^ args)
 {
 	return PtrRun<TResult>((int)ptr, args);
 }
-generic <typename TResult> TResult Asm::PtrRun(void* ptr, array<Object^>^ args)
+generic <typename TResult> TResult Asm::PtrRun(void* ptr, ...array<Object^>^ args)
 {
 	return PtrRun<TResult>((int)ptr, args);
 }
-generic <typename TResult> TResult Asm::PtrRun(int ptr, array<Object^>^ args)
+generic <typename TResult> TResult Asm::PtrRun(int ptr, ...array<Object^>^ args)
 {
 	const array<Byte>^ code = { 85, 137, 229, 81, 82, 83, 139, 69, 12, 139, 72, 4, 133, 201, 116, 85, 131, 192, 12, 139, 85, 8, 131, 194, 8, 138, 26, 132, 219, 139, 24, 116, 3, 139, 91, 4, 137, 223, 131, 249, 1, 116, 56, 131, 192, 4, 131, 194, 1, 138, 26, 132, 219, 139, 24, 116, 3, 139, 91, 4, 137, 222, 131, 249, 2, 116, 30, 131, 233, 2, 107, 217, 4, 1, 216, 1, 202, 138, 26, 132, 219, 139, 24, 116, 3, 139, 91, 4, 83, 131, 232, 4, 131, 234, 1, 226, 236, 137, 242, 137, 249, 139, 69, 248, 255, 208, 91, 201, 194, 4, 0 };
 	return _PtrRun<TResult>(ptr, code, args);
 }
-void Asm::PtrRun_Impl(IntPtr ptr, array<Object^>^ args)
+void Asm::PtrRun_Impl(IntPtr ptr, ...array<Object^>^ args)
 {
 	PtrRun_Impl<int>((int)ptr, args);
 }
-void Asm::PtrRun_Impl(void* ptr, array<Object^>^ args)
+void Asm::PtrRun_Impl(void* ptr, ...array<Object^>^ args)
 {
 	PtrRun_Impl<int>((int)ptr, args);
 }
-void Asm::PtrRun_Impl(int ptr, array<Object^>^ args)
+void Asm::PtrRun_Impl(int ptr, ...array<Object^>^ args)
 {
 	PtrRun_Impl<int>(ptr, args);
 }
-generic <typename TResult> TResult Asm::PtrRun_Impl(IntPtr ptr, array<Object^>^ args)
+generic <typename TResult> TResult Asm::PtrRun_Impl(IntPtr ptr, ...array<Object^>^ args)
 {
 	return PtrRun_Impl<TResult>((int)ptr, args);
 }
-generic <typename TResult> TResult Asm::PtrRun_Impl(void* ptr, array<Object^>^ args)
+generic <typename TResult> TResult Asm::PtrRun_Impl(void* ptr, ...array<Object^>^ args)
 {
 	return PtrRun_Impl<TResult>((int)ptr, args);
 }
-generic <typename TResult> TResult Asm::PtrRun_Impl(int ptr, array<Object^>^ args)
+generic <typename TResult> TResult Asm::PtrRun_Impl(int ptr, ...array<Object^>^ args)
 {
 	const array<Byte>^ code = { 85, 137, 229, 81, 82, 83, 139, 69, 12, 139, 72, 4, 133, 201, 116, 84, 131, 192, 12, 139, 85, 8, 131, 194, 8, 138, 26, 132, 219, 139, 24, 116, 3, 139, 91, 4, 137, 223, 131, 249, 1, 116, 55, 131, 192, 4, 131, 194, 1, 138, 26, 132, 219, 139, 24, 116, 3, 139, 91, 4, 137, 222, 131, 249, 2, 116, 29, 131, 192, 4, 131, 194, 1, 131, 233, 2, 138, 26, 132, 219, 139, 24, 116, 3, 139, 91, 4, 83, 131, 192, 4, 131, 194, 1, 226, 236, 137, 242, 137, 249, 139, 69, 248, 255, 208, 91, 201, 194, 4, 0 };
 	return _PtrRun<TResult>(ptr, code, args);

@@ -146,14 +146,14 @@ void Hook::Switch(bool ishook)
 	this->_ishook = !ishook;
 	this->Switch();
 }
-generic <typename TResult> TResult Hook::Run(array<Object^>^ args)
+generic <typename TResult> TResult Hook::Run(...array<Object^>^ args)
 {
 	this->Switch();
 	TResult ret = this->_info->IL ? Asm::PtrRun<TResult>(this->_info->Source, args) : Asm::PtrRun_Impl<TResult>(this->_info->Source, args);
 	this->Switch();
 	return ret;
 }
-void Hook::Run(array<Object^>^ args)
+void Hook::Run(...array<Object^>^ args)
 {
 	this->Switch();
 	if (this->_info->IL) Asm::PtrRun(this->_info->Source, args);

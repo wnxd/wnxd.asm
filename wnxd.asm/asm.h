@@ -27,27 +27,19 @@ namespace wnxd
 			/// </summary>
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
-			static void PtrRun(IntPtr ptr, array<Object^>^ args);
+			static void PtrRun(IntPtr ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个方法地址
 			/// </summary>
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
-			static void PtrRun(void* ptr, array<Object^>^ args);
+			static void PtrRun(void* ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个方法地址
 			/// </summary>
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
-			static void PtrRun(int ptr, array<Object^>^ args);
-			/// <summary>
-			/// 执行一个方法地址
-			/// </summary>
-			/// <typeparam name="TResult">返回值类型</typeparam>
-			/// <param name="ptr">方法地址</param>
-			/// <param name="args">参数列表</param>
-			/// <returns>执行结果</returns>
-			generic <typename TResult> static TResult PtrRun(IntPtr ptr, array<Object^>^ args);
+			static void PtrRun(int ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个方法地址
 			/// </summary>
@@ -55,7 +47,7 @@ namespace wnxd
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
 			/// <returns>执行结果</returns>
-			generic <typename TResult> static TResult PtrRun(void* ptr, array<Object^>^ args);
+			generic <typename TResult> static TResult PtrRun(IntPtr ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个方法地址
 			/// </summary>
@@ -63,25 +55,33 @@ namespace wnxd
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
 			/// <returns>执行结果</returns>
-			generic <typename TResult> static TResult PtrRun(int ptr, array<Object^>^ args);
+			generic <typename TResult> static TResult PtrRun(void* ptr, ...array<Object^>^ args);
+			/// <summary>
+			/// 执行一个方法地址
+			/// </summary>
+			/// <typeparam name="TResult">返回值类型</typeparam>
+			/// <param name="ptr">方法地址</param>
+			/// <param name="args">参数列表</param>
+			/// <returns>执行结果</returns>
+			generic <typename TResult> static TResult PtrRun(int ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个非IL方法地址
 			/// </summary>
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
-			static void PtrRun_Impl(IntPtr ptr, array<Object^>^ args);
+			static void PtrRun_Impl(IntPtr ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个非IL方法地址
 			/// </summary>
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
-			static void PtrRun_Impl(void* ptr, array<Object^>^ args);
+			static void PtrRun_Impl(void* ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个非IL方法地址
 			/// </summary>
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
-			static void PtrRun_Impl(int ptr, array<Object^>^ args);
+			static void PtrRun_Impl(int ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个非IL方法地址
 			/// </summary>
@@ -89,7 +89,7 @@ namespace wnxd
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
 			/// <returns>执行结果</returns>
-			generic <typename TResult> static TResult PtrRun_Impl(IntPtr ptr, array<Object^>^ args);
+			generic <typename TResult> static TResult PtrRun_Impl(IntPtr ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个非IL方法地址
 			/// </summary>
@@ -97,7 +97,7 @@ namespace wnxd
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
 			/// <returns>执行结果</returns>
-			generic <typename TResult> static TResult PtrRun_Impl(void* ptr, array<Object^>^ args);
+			generic <typename TResult> static TResult PtrRun_Impl(void* ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 执行一个非IL方法地址
 			/// </summary>
@@ -105,7 +105,7 @@ namespace wnxd
 			/// <param name="ptr">方法地址</param>
 			/// <param name="args">参数列表</param>
 			/// <returns>执行结果</returns>
-			generic <typename TResult> static TResult PtrRun_Impl(int ptr, array<Object^>^ args);
+			generic <typename TResult> static TResult PtrRun_Impl(int ptr, ...array<Object^>^ args);
 			/// <summary>
 			/// 从数据地址中读取指定长度的字节码
 			/// </summary>

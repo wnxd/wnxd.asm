@@ -174,12 +174,12 @@ namespace wnxd
 			/// <typeparam name="TResult">返回类型</typeparam>
 			/// <param name="args">参数列表</param>
 			/// <returns>返回值</returns>
-			generic <typename TResult> TResult Run(array<Object^>^ args);
+			generic <typename TResult> TResult Run(...array<Object^>^ args);
 			/// <summary>
 			/// 调用被hook对象的原方法
 			/// </summary>
 			/// <param name="args">参数列表</param>
-			void Run(array<Object^>^ args);
+			void Run(...array<Object^>^ args);
 			/// <summary>
 			/// 如果当前方法为转跳目标方法,则获取以此为目标的第一个hook对象,否则为null
 			/// </summary>
